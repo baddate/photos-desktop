@@ -24,14 +24,14 @@ jobs:
 
         strategy:
             matrix:
-                os: [macos-latest, ubuntu-latest, windows-latest]
+                os: [windows-latest]
 
         steps:
             - name: Checkout code
               uses: actions/checkout@v4
               with:
                   # Checkout the desktop/rc branch from the source repository.
-                  repository: ente-io/ente
+                  repository: baddate/ente
                   ref: desktop/rc
                   submodules: recursive
 
@@ -69,12 +69,6 @@ jobs:
                   # assets to the existing draft named after the version.
                   release: ${{ startsWith(github.ref, 'refs/tags/v') }}
 
-                  mac_certs: ${{ secrets.MAC_CERTS }}
-                  mac_certs_password: ${{ secrets.MAC_CERTS_PASSWORD }}
               env:
-                  # macOS notarization credentials key details
-                  APPLE_ID: ${{ secrets.APPLE_ID }}
-                  APPLE_APP_SPECIFIC_PASSWORD:
-                      ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
-                  APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
                   USE_HARD_LINKS: false
+                  NEXT_PUBLIC_ENTE_ENDPOINT: https://ente.smj.im
