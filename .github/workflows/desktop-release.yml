@@ -32,7 +32,7 @@ jobs:
               with:
                   # Checkout the desktop/rc branch from the source repository.
                   repository: baddate/ente
-                  ref: desktop/rc
+                  ref: main
                   submodules: recursive
 
             - name: Setup node
